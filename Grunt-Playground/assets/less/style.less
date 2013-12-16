@@ -1,0 +1,388 @@
+//
+// Bootstrap the thing thanks Twitter
+// ==========================================================================
+
+
+// Core variables and mixins
+// @import "vendor/bootstrap-master/less/variables.less";
+@import "variables.less";
+@import "vendor/bootstrap-master/less/mixins.less";
+
+// Reset
+@import "vendor/bootstrap-master/less/normalize.less";
+@import "vendor/bootstrap-master/less/print.less";
+
+// Core CSS
+@import "vendor/bootstrap-master/less/scaffolding.less";
+@import "vendor/bootstrap-master/less/type.less";
+@import "vendor/bootstrap-master/less/code.less";
+@import "vendor/bootstrap-master/less/grid.less";
+@import "vendor/bootstrap-master/less/tables.less";
+@import "vendor/bootstrap-master/less/forms.less";
+@import "vendor/bootstrap-master/less/buttons.less";
+
+// Components
+@import "vendor/bootstrap-master/less/component-animations.less";
+@import "vendor/bootstrap-master/less/glyphicons.less";
+@import "vendor/bootstrap-master/less/dropdowns.less";
+@import "vendor/bootstrap-master/less/button-groups.less";
+@import "vendor/bootstrap-master/less/input-groups.less";
+@import "vendor/bootstrap-master/less/navs.less";
+@import "vendor/bootstrap-master/less/navbar.less";
+@import "vendor/bootstrap-master/less/breadcrumbs.less";
+@import "vendor/bootstrap-master/less/pagination.less";
+@import "vendor/bootstrap-master/less/pager.less";
+@import "vendor/bootstrap-master/less/labels.less";
+@import "vendor/bootstrap-master/less/badges.less";
+@import "vendor/bootstrap-master/less/jumbotron.less";
+@import "vendor/bootstrap-master/less/thumbnails.less";
+@import "vendor/bootstrap-master/less/alerts.less";
+@import "vendor/bootstrap-master/less/progress-bars.less";
+@import "vendor/bootstrap-master/less/media.less";
+@import "vendor/bootstrap-master/less/list-group.less";
+@import "vendor/bootstrap-master/less/panels.less";
+@import "vendor/bootstrap-master/less/wells.less";
+@import "vendor/bootstrap-master/less/close.less";
+
+// Components w/ JavaScript
+@import "vendor/bootstrap-master/less/modals.less";
+@import "vendor/bootstrap-master/less/tooltip.less";
+@import "vendor/bootstrap-master/less/popovers.less";
+@import "vendor/bootstrap-master/less/carousel.less";
+
+// Utility classes
+@import "vendor/bootstrap-master/less/utilities.less";
+@import "vendor/bootstrap-master/less/responsive-utilities.less";
+
+
+//
+// Imports divers plugins
+// ==========================================================================
+@import (less) "../css/vendor/animate-custom.css";
+@import (less) "../css/vendor/ladda-themeless.min.css";
+@import (less) "../css/vendor/bootstrap-select.css";
+
+
+
+//
+// Fonts
+// ==========================================================================
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+html {height: 100%}
+body {
+    padding-top: 53px; /* 60px to make the container go all the way to the bottom of the topbar */
+    &.body-full {
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  text-transform: uppercase;
+}
+
+
+//
+// The design
+// ==========================================================================
+
+// Main container
+// =====================================
+
+// I dont use bootstrap container, i want it fluid
+.container-fluid {
+    margin: 0 auto;
+    padding-left: @grid-gutter-width;
+    padding-right: @grid-gutter-width;
+}
+
+
+// Panels
+// =====================================
+.panel-primary .panel-title {
+  small {color: white}
+}
+
+
+// Form elements, buttons…
+// =====================================
+// Nada
+
+// Lists of presentations
+// =====================================
+
+.presentationListItem {
+    margin-bottom: 20px;
+    min-height: 350px;
+    overflow: hidden;
+    padding: 15px;
+    &.example {
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+        background-color: #fff;
+    }
+    .presentationListItem-content {
+        transition: all .5s;
+    }
+    .themask {
+        // The plus button
+        .square(20px);
+        position: absolute;
+        top: 50%; left: 50%;
+        margin-left: -10px;
+        margin-top: -10px;
+        cursor: pointer;
+        // background-color: transparent;
+        border-radius: 100%;
+        line-height: 40px;
+        text-align: center;
+        transition: all .5s;
+        .glyphicon {
+            margin: 0;
+        }
+    }
+    .overlay-content {
+        padding: 15px;
+        position: absolute;
+        top: 0; left: 0;
+        height: 100%; width: 100%;
+        z-index: 1000;
+        opacity: 0;
+        // background-color: white;
+        transition: all .8s;
+    }
+    .toolbox {
+        // position: absolute;
+        // bottom: 20px;
+    }
+    // Lets roll over that !
+    &:hover {
+        .presentationListItem-content {
+            opacity: 0;
+        }
+        .themask {
+            box-shadow: 0 0 0 500px white;
+            background-color: white;
+        }
+        .overlay-content {
+            opacity: 1;
+        }
+    }
+}
+
+// Presentations metas (author, date…)
+.presentation-meta {
+    font-size: .8em;
+    color: lighten(@text-color, 20%)
+}
+
+
+//
+// Presentation composer and draggable
+// ==========================================================================
+
+// http://www.html5rocks.com/en/tutorials/dnd/basics/
+[draggable] {
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
+// The main container for the composer
+// =====================================
+
+// Main layout
+
+.composer {
+    width: 100%;
+    height: 100%;
+    .clearfix;
+}
+
+.composer-library, .composer-playlist {
+    float: left;
+    height: 100%
+}
+
+// The tools
+// =====================================
+.composer-toolbox {
+    padding: @padding-base-vertical;
+}
+
+// Composer elements
+// =====================================
+
+
+// The media library
+.composer-library {
+    width: 80%;
+    background-color: @gray-lighter;
+    border-right: 1px solid @body-bg;
+
+    .composer-dropzone {
+        .list-unstyled;
+        padding: 10px 10px 30px 10px;
+        margin-bottom: -200px;
+        height: 90%;
+        overflow: scroll;
+        &:empty {
+            background-color: @gray-dark;
+            &:after {
+                content: 'Ah… Il vous faut des média :)';
+                background-color: @gray-light;
+                padding: .5em;
+                margin: 0;
+                display: block;
+            }
+        }
+    }
+    .composer-item, .sortable-placeholder {
+        float: left;
+        margin: 5px;
+        text-align: center;
+        width: 180px;
+        min-height: 190px;
+    }
+    .composer-item {
+        text-align: center;
+        padding: 5px;
+        background-color: white;
+        cursor: move;
+        position: relative;
+        &:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        &.sortable-dragging {
+            opacity: .3;
+            cursor: move;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+        }
+    }
+    .media-item-image {
+        margin-bottom: 5px;
+    }
+
+    // Placeholder to show the next place of an element
+    .sortable-placeholder {
+        height: 100px;
+        background-color: rgba(0,0,0,.1);
+    }
+    .tools-media {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+    }
+
+}
+
+// The playlist
+.composer-playlist {
+    width: 20%;
+    background-color: @gray;
+    counter-reset: section;
+
+    // The droppable zone
+    .composer-dropzone {
+        .list-unstyled;
+        height: 100%;
+        max-height: 100%;
+        overflow: scroll;
+        margin: 0;
+        padding: 10px 10px 100px 10px;
+
+        &:empty {
+            background-color: @gray-dark;
+            &:after {
+                .alert;
+                content: 'Glissez-ici les média de votre parcours dans l’ordre souhaité.';
+                background-color: @gray-light;
+                display: block;
+                margin-top: 300px;
+            }
+        }
+    }
+    .composer-item, .sortable-placeholder {
+        // .size(90px, 55px);
+        margin: 5px;
+    }
+
+    .sortable-placeholder {
+        border: 2px @brand-primary solid;
+        background-color: rgba(red(@brand-primary),green(@brand-primary),blue(@brand-primary),.2);
+    }
+    .composer-item {
+        text-align: center;
+        padding: 5px;
+        background-color: white;
+        position: relative;
+        overflow: hidden;
+        position: relative;
+        // counter-increment: section;
+        // &:before {
+        //     content: counter(section) " ";
+        //     display: inline-block;
+        //     background-color: @brand-primary;
+        //     border-radius: 3px;
+        //     color: white;
+        //     padding: 0 10px;
+        //     position: absolute;
+        //     bottom: 10px; right: 10px;
+        // }
+        &.sortable-dragging {
+            opacity: .8;
+            transform3d: rotate(30deg);
+        }
+    }
+    .media-meta {
+        .text-left;
+        font-size: 90%;
+    }
+    .media-item-image {
+        width: 30%;
+        float: left;
+        margin-right: 5px;
+    }
+    .tools-media {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+    }
+
+}
+.media-item {
+    pointer-events: none; // It must not be natively draggable (https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events)
+    max-height: 100%;
+    display: inline-block;
+}
+
+// Main boxes titles
+.composer-component-heading {
+    background-color: darken(@brand-primary, 30%);
+    padding: 10px;
+    .clearfix;
+}
+.composer-component-title {
+    .h5;
+    color: @body-bg;
+    display: inline-block;
+    margin: 0;
+}
+
+// Library filters
+.library-tools {
+    .current {
+        background-color: white;
+        color: #fff;
+        background-color: darken(@brand-primary, 30%);
+    }
+}
+
+
+
+
+
+
