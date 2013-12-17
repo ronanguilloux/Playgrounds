@@ -16,8 +16,11 @@ all:
 	#@echo "compiling exercice3..."
 	#gcc exercice3.c -o exercice3
 	#./exercice3
-	@echo "compiling exercice4..."
-	gcc exercice4.c -o exercice4
-	./exercice4
+	#@echo "compiling exercice4..."
+	#gcc exercice4.c -o exercice4
+	#./exercice4
+	@echo "compiling exercice5..."
+	gcc exercice5.c -o exercice5
+	./exercice5
 
 # vim:ft=make
