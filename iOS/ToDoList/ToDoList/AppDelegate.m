@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Les Polypodes. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "XYZAppDelegate.h"
 
-@implementation AppDelegate
+@implementation XYZAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
