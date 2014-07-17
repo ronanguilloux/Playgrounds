@@ -1,0 +1,23 @@
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+facebook_login:
+    pattern: /login/check-facebook
+
+google_login:
+    pattern: /login/check-google
+
+custom_login:
+    pattern: /login/check-custom
+
+github_login:
+    pattern: /login/check-github
+
+ronan_guilloux_o_auth:
+    resource: "@RonanGuillouxOAuthBundle/Resources/config/routing.yml"
+    prefix:   /
+
