@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Dashley;
+    src: url(http://openfontlibrary.org/assets/fonts/dashley/6fcf0f56a0f8e27f1c9c4d0abbe2e456/913989227fe025b393c45133f17a9132/DashleyRegular.ttf);
+}
+.poly-hello {
+    font-family: Dashley;
+    color: pink;
+}
